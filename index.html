@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14263d">
+  <title>Personal Productivity System</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><div class="eyebrow">PERSONAL WORKSPACE</div><h1>Productivity System</h1></div>
+    <button id="refreshBtn" class="secondary">Refresh</button>
+  </header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">YOUR EXECUTION SPACE</p><h2>Turn plans into finished outcomes.</h2>
+      <p>Flexible hierarchy · Outcome-first planning · Rolling-wave execution</p></div>
+      <div class="stats"><div><strong id="totalCount">–</strong><span>Items</span></div><div><strong id="activeCount">–</strong><span>Active</span></div><div><strong id="doneCount">–</strong><span>Completed</span></div></div>
+    </section>
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Search your plans…">
+      <select id="typeFilter"><option value="">All types</option><option>Area</option><option>Goal</option><option>Project</option><option>Phase</option><option>Milestone</option><option>Task</option><option>Subtask</option></select>
+      <button id="addBtn">+ Add item</button>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><div><h3>Hierarchy</h3><p>Expand each level to explore your plan.</p></div><span id="connection" class="pill">Connecting…</span></div>
+      <div id="tree" class="tree"><p class="muted">Loading database…</p></div>
+    </section>
+  </main>
+  <dialog id="itemDialog">
+    <form id="itemForm" method="dialog">
+      <div class="dialog-head"><h3>Add hierarchy item</h3><button type="button" id="closeDialog" class="icon-btn">×</button></div>
+      <label>Parent item<select id="parentId"><option value="">Top level</option></select></label>
+      <label>Type<select id="nodeType"><option>Area</option><option>Goal</option><option>Project</option><option>Phase</option><option>Workstream</option><option>Milestone</option><option>Task</option><option>Subtask</option><option>Action</option><option>Habit</option></select></label>
+      <label>Title<input id="nodeTitle" required maxlength="180" placeholder="What needs to be done?"></label>
+      <label>Description<textarea id="nodeDescription" rows="3"></textarea></label>
+      <label>Success criteria<input id="nodeCriteria" placeholder="How will you know it is complete?"></label>
+      <label>Next action<input id="nodeNext" placeholder="The first concrete step"></label>
+      <label>Priority<select id="nodePriority"><option>Medium</option><option>High</option><option>Critical</option><option>Low</option></select></label>
+      <button type="submit" class="primary">Save item</button>
+    </form>
+  </dialog>
+  <script src="/app.js"></script>
+</body>
+</html>
