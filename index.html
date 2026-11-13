@@ -3,43 +3,84 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#14263d">
-  <title>Personal Productivity System</title>
+  <meta name="theme-color" content="#fffaf7">
+  <meta name="description" content="A calm, outcome-first space to turn plans into finished outcomes.">
+  <title>thenextstep — Your personal workspace</title>
   <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <div><div class="eyebrow">PERSONAL WORKSPACE</div><h1>Productivity System</h1></div>
-    <button id="refreshBtn" class="secondary">Refresh</button>
-  </header>
-  <main>
-    <section class="intro">
-      <div><p class="eyebrow">YOUR EXECUTION SPACE</p><h2>Turn plans into finished outcomes.</h2>
-      <p>Flexible hierarchy · Outcome-first planning · Rolling-wave execution</p></div>
-      <div class="stats"><div><strong id="totalCount">–</strong><span>Items</span></div><div><strong id="activeCount">–</strong><span>Active</span></div><div><strong id="doneCount">–</strong><span>Completed</span></div></div>
-    </section>
-    <section class="toolbar">
-      <input id="search" type="search" placeholder="Search your plans…">
-      <select id="typeFilter"><option value="">All types</option><option>Area</option><option>Goal</option><option>Project</option><option>Phase</option><option>Milestone</option><option>Task</option><option>Subtask</option></select>
-      <button id="addBtn">+ Add item</button>
-    </section>
-    <section class="panel">
-      <div class="panel-head"><div><h3>Hierarchy</h3><p>Expand each level to explore your plan.</p></div><span id="connection" class="pill">Connecting…</span></div>
-      <div id="tree" class="tree"><p class="muted">Loading database…</p></div>
-    </section>
-  </main>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="thenextstep home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-name">thenext<span>step</span><small>YOUR PERSONAL WORKSPACE</small></span>
+      </a>
+      <div class="top-actions">
+        <span class="today-label"><span class="live-dot"></span> YOUR EXECUTION SPACE</span>
+        <button id="refreshBtn" class="refresh-btn" type="button"><span class="refresh-icon">↻</span> Refresh</button>
+        <div class="avatar" aria-label="Your profile">R</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome">
+        <div class="welcome-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> A LITTLE PROGRESS, EVERY DAY</div>
+          <h1>Make room for<br><em>your next step.</em></h1>
+          <p>Big goals become achievable when you know what to do next. Keep your plans clear, your focus steady, and your progress moving.</p>
+          <div class="welcome-note"><span class="sparkle">✦</span> One goal. One plan. One next step.</div>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-sun"></div>
+          <div class="art-card card-back"><span class="tiny-check">✓</span><i></i><i></i></div>
+          <div class="art-card card-front"><div class="art-card-top"><span>YOUR PLAN</span><b>✦</b></div><div class="art-task"><span class="task-check">✓</span><span></span></div><div class="art-task"><span class="task-check">✓</span><span></span></div><div class="art-task muted-task"><span class="task-check"></span><span></span></div><div class="art-progress"><span></span></div></div>
+          <div class="art-flower flower-a">✿</div><div class="art-flower flower-b">✦</div>
+          <div class="art-caption"><b>Small steps</b><span>lead to big things</span></div>
+        </div>
+        <div class="welcome-bottom"><span>✦</span> YOUR JOURNEY, AT YOUR PACE</div>
+      </section>
+
+      <section class="overview">
+        <div class="section-heading"><div><span class="section-kicker">YOUR OVERVIEW</span><h2>A clearer picture of your progress</h2></div><span class="soft-label">YOUR WORKSPACE</span></div>
+        <div class="stats-grid">
+          <article class="stat-card stat-total"><div class="stat-icon">◫</div><div><span class="stat-label">TOTAL ITEMS</span><strong id="totalCount">–</strong><small>Across your plans</small></div><span class="stat-decoration">✳</span></article>
+          <article class="stat-card stat-active"><div class="stat-icon">↗</div><div><span class="stat-label">IN PROGRESS</span><strong id="activeCount">–</strong><small>Keep the momentum</small></div><span class="stat-decoration">⌁</span></article>
+          <article class="stat-card stat-done"><div class="stat-icon">✓</div><div><span class="stat-label">COMPLETED</span><strong id="doneCount">–</strong><small>Look how far you've come</small></div><span class="stat-decoration">✦</span></article>
+        </div>
+      </section>
+
+      <section class="plans-section">
+        <div class="section-heading plan-heading"><div><span class="section-kicker">YOUR PLAN, YOUR WAY</span><h2>Explore your hierarchy</h2><p>Build a flexible structure that makes your next action easy to find.</p></div><div class="connection-wrap"><span id="connection" class="connection-pill"><span class="connection-dot"></span> Connecting…</span></div></div>
+        <div class="workspace-panel">
+          <div class="toolbar">
+            <div class="search-wrap"><span class="search-icon">⌕</span><input id="search" type="search" placeholder="Search goals, projects or tasks…" aria-label="Search your plans"></div>
+            <div class="filter-wrap"><span class="filter-icon">☷</span><select id="typeFilter" aria-label="Filter by item type"><option value="">All item types</option><option>Area</option><option>Goal</option><option>Project</option><option>Phase</option><option>Workstream</option><option>Milestone</option><option>Task</option><option>Subtask</option><option>Action</option><option>Habit</option></select></div>
+            <button id="addBtn" class="add-btn" type="button"><span>＋</span> Add an item</button>
+          </div>
+          <div class="tree-heading"><div><span class="tree-heading-icon">⌘</span><div><h3>Plan structure</h3><p>Your goals, projects and the steps that move them forward.</p></div></div><span class="tree-hint">SELECT A + CHILD TO NEST AN ITEM</span></div>
+          <div id="tree" class="tree"><div class="loading-state"><span class="loader"></span><p>Bringing your plans together…</p></div></div>
+        </div>
+      </section>
+      <footer class="footer"><span class="footer-mark">✳</span><span>thenextstep</span><span class="footer-dot">·</span><span>Progress over perfection.</span></footer>
+    </main>
+  </div>
+
   <dialog id="itemDialog">
-    <form id="itemForm" method="dialog">
-      <div class="dialog-head"><h3>Add hierarchy item</h3><button type="button" id="closeDialog" class="icon-btn">×</button></div>
-      <label>Parent item<select id="parentId"><option value="">Top level</option></select></label>
-      <label>Type<select id="nodeType"><option>Area</option><option>Goal</option><option>Project</option><option>Phase</option><option>Workstream</option><option>Milestone</option><option>Task</option><option>Subtask</option><option>Action</option><option>Habit</option></select></label>
-      <label>Title<input id="nodeTitle" required maxlength="180" placeholder="What needs to be done?"></label>
-      <label>Description<textarea id="nodeDescription" rows="3"></textarea></label>
+    <form id="itemForm" method="dialog" class="item-form">
+      <div class="dialog-head"><div><span class="section-kicker">GROW YOUR PLAN</span><h3>Add a new item</h3><p>Start with a clear title. You can build around it as you go.</p></div><button type="button" id="closeDialog" class="icon-btn" aria-label="Close dialog">×</button></div>
+      <label>Parent item <span class="optional-label">OPTIONAL</span><select id="parentId"><option value="">Top level</option></select></label>
+      <label>Item type<select id="nodeType"><option>Area</option><option>Goal</option><option>Project</option><option>Phase</option><option>Workstream</option><option>Milestone</option><option>Task</option><option>Subtask</option><option>Action</option><option>Habit</option></select></label>
+      <label>Title<input id="nodeTitle" required maxlength="180" placeholder="What do you want to move forward?"></label>
+      <label>Description<textarea id="nodeDescription" rows="3" placeholder="Add a little context…"></textarea></label>
       <label>Success criteria<input id="nodeCriteria" placeholder="How will you know it is complete?"></label>
       <label>Next action<input id="nodeNext" placeholder="The first concrete step"></label>
       <label>Priority<select id="nodePriority"><option>Medium</option><option>High</option><option>Critical</option><option>Low</option></select></label>
-      <button type="submit" class="primary">Save item</button>
+      <button type="submit" class="save-btn">Save item <span>→</span></button>
     </form>
   </dialog>
   <script src="/app.js"></script>

@@ -1,9 +1,9 @@
 {
-  "name": "Personal Productivity System",
-  "short_name": "Productivity",
+  "name": "thenextstep \u2014 Your personal workspace",
+  "short_name": "thenextstep",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f4f6f9",
-  "theme_color": "#14263d",
+  "background_color": "#fffdfa",
+  "theme_color": "#fffaf7",
   "icons": []
 }
